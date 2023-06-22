@@ -1,39 +1,14 @@
-Programming Assignment: Image Classifier
-
-
-PLEASE REMEMBER NOT TO INCLUDE YOUR NAME (OR LATER IN THE COURSE, YOUR
-PARTNER'S NAME) ANYWHERE IN THIS SUBMISSION.
+Programming Project: 10 Days in the Caribbean
 
 /**********************************************************************
  * Approximate number of hours to complete this assignment            *
  **********************************************************************/
+ 10 Days in the Caribbean is a command-line game that takes the user through ten days in the region.
+ It is modeled after the board game "10 Days in Africa". The main objective of the game is to design
+ a trip throughout the Caribbean in 10 days by using different vehicles. The user can visit countries
+ that are adjacent to each other using a boat, and they can visit countries of the same color using an airplane.
+ Overall, the user must fill in the 10 spots in the cardholder with a journey that complies with all the rules
+ of the game in order to win the game!
 
-Number of hours: 60
-
-/**********************************************************************
- * Did you receive help from classmates, past students, or
- *  anyone else? If so, please list their names.  ("A Sunday lab TA"
- *  or "Office hours on Thursday" is ok if you don't know their name.)
- **********************************************************************/
-
-Yes or no? Yes. Yes, Donna Gabai
-
-
-/**********************************************************************
- *  Did you encounter any serious problems? If so, please describe.
- **********************************************************************/
-Yes or no? Yes. It took us a while to implement the country cards and transportation
-cards class but after that, it was fairly straight forward. Our main problems came about
-because of the text file. We made some simple mistakes like spelling things incorrectly
-and it took a while to realize that the problem wasn't the actual code.
-
-/**********************************************************************
- *  Did you use any external sources?
- **********************************************************************/
- No.
-
-/**********************************************************************
- *  List any other comments here.
- **********************************************************************/
-
-Was fun.
+ Check the menuRules.png to see the game's rules
+ Check the CaribbeanMap.png to see the map of the countries in the region and their colors and geographic locations
