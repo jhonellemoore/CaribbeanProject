@@ -1,3 +1,7 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
 public class TransportationCards {
 
     // Array of transportation card objects
@@ -12,17 +16,18 @@ public class TransportationCards {
     }
 
     // Constructor for transportationcards
-    public TransportationCards() {
-        In transportationFile = new In("Transportation/Transport");
-        int m = transportationFile.readInt();
+    public TransportationCards() throws FileNotFoundException {
+        File transportationFile = new File("/Users/jmoore/CaribbeanProject/Transportation/Transport");
+        Scanner transportationList = new Scanner(transportationFile);
+        int m = transportationList.nextInt();
         int n = m + 26;
         transport = new TransportationCard[n];
 
         for (int i = 26; i < n; i++) {
             transport[i] = new TransportationCard();
-            transport[i].type = transportationFile.readString();
-            transport[i].color = transportationFile.readString();
-            transport[i].fileName = transportationFile.readString();
+            transport[i].type = transportationList.next();
+            transport[i].color = transportationList.next();
+            transport[i].fileName = transportationList.next();
         }
     }
 
@@ -42,10 +47,11 @@ public class TransportationCards {
     }
 
     // Displays the card to the user
-    public void displayCard(int x) {
+    /* public void displayCard(int x) {
         if (isBoat(x) || (isAirplane(x)))
             StdDraw.picture(.2, .35, transport[x - 1].fileName, .3, .35);
     }
+     */
 
     // Returns true if card is an airplane
     public boolean isAirplane(int x) {
@@ -81,22 +87,22 @@ public class TransportationCards {
 
 
     // Tests methods created
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
         TransportationCards test = new TransportationCards();
-        StdDraw.picture(.5, .5, test.transport[28].fileName, .4, .4);
-        StdOut.println(test.getColor(43));
-        StdOut.println(test.getType(27));
-        StdOut.println(test.isBoat(27));
-        StdOut.println(test.isAirplane(31));
-        StdOut.println(test.getFile(31));
+        // StdDraw.picture(.5, .5, test.transport[28].fileName, .4, .4);
+        System.out.println(test.getColor(43));
+        System.out.println(test.getType(27));
+        System.out.println(test.isBoat(27));
+        System.out.println(test.isAirplane(31));
+        System.out.println(test.getFile(31));
 
-        StdOut.println(test.toString(27));
+        System.out.println(test.toString(27));
 
         for (int i = 27; i < 52; i++) {
-            StdOut.println(test.isAirplane(i) + " " + test.getColor(i) + " " + i);
+            System.out.println(test.isAirplane(i) + " " + test.getColor(i) + " " + i);
         }
 
 
-        test.displayCard(31);
+        // test.displayCard(31);
     }
 }

@@ -1,10 +1,13 @@
+import java.io.FileNotFoundException;
+import java.util.*;
+
 public class DeckOfCards {
 
     // Stack of integers for the original pile
-    private Stack<Integer> originalPile = new Stack<Integer>();
+    private final Stack<Integer> originalPile = new Stack<Integer>();
 
     // Stack of integers for the discard pile
-    private Stack<Integer> discardPile = new Stack<Integer>(); // Starts empty
+    private final Stack<Integer> discardPile = new Stack<Integer>(); // Starts empty
 
     // Creates a stack of integers that represent a card from 1 to 51
     public DeckOfCards() {
@@ -47,7 +50,7 @@ public class DeckOfCards {
             return discardPile.pop();
         }
         else {
-            StdOut.println("Discard Pile is empty!");
+            System.out.println("Discard Pile is empty!");
             return 0;
         }
     }
@@ -62,13 +65,13 @@ public class DeckOfCards {
             if (oldCard < 27 && oldCard != 0) {
                 name = cc.getName(oldCard);
                 color = cc.getColor(oldCard);
-                cc.displayCard(oldCard);
+                // cc.displayCard(oldCard);
             }
 
             else if (oldCard >= 27 && oldCard < 52) {
                 name = tc.getType(oldCard);
                 color = tc.getColor(oldCard);
-                tc.displayCard(oldCard);
+               // tc.displayCard(oldCard);
             }
         }
         else {
@@ -81,7 +84,7 @@ public class DeckOfCards {
 
 
     // Tests methods
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
 
         TransportationCards tc = new TransportationCards();
         CountryCards cc = new CountryCards();
@@ -89,26 +92,28 @@ public class DeckOfCards {
         DeckOfCards game = new DeckOfCards();
         int x = game.drawFromPile();
 
-        StdOut.println(x);
+        System.out.println(x);
 
+        /*
         if (cc.isCountry(x)) {
             cc.displayCard(x);
         }
         else {
             tc.displayCard(x);
         }
+         */
 
         // add drawn card to discard pile
         game.addToDiscard(x);
-        StdOut.println(game.topOfDiscard(tc, cc));
+        System.out.println(game.topOfDiscard(tc, cc));
 
         int y = game.drawFromDiscardPile();
-        StdOut.println(y);
+        System.out.println(y);
 
-        StdOut.println(game.drawFromDiscardPile());
+        System.out.println(game.drawFromDiscardPile());
 
-        StdOut.println(game.isDiscardPileEmpty());
-        StdOut.println(game.isOriginalEmpty());
+        System.out.println(game.isDiscardPileEmpty());
+        System.out.println(game.isOriginalEmpty());
 
     }
 }

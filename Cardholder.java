@@ -1,25 +1,26 @@
+import java.io.FileNotFoundException;
+
 public class Cardholder {
 
     // Size of cardholder array
     public static final int LENGTH = 11;
 
     // Cardholder array
-    private int[] cardHolder;
+    private final int[] cardHolder;
 
-    // Creates a cardholder object with an array of size 11
+    // Creates a cardholder object which is an array of size 11
     public Cardholder() {
         cardHolder = new int[LENGTH];
     }
 
     // Returns true if cardholder is full
     public boolean cardholderFull() {
-        boolean state = true;
         for (int i = 0; i < LENGTH; i++) {
             if (cardHolder[i] == 0) {
-                state = false;
+                return false;
             }
         }
-        return state;
+        return true;
     }
 
     // Places a card (n) in the cardholder at position x
@@ -133,7 +134,7 @@ public class Cardholder {
     }
 
     // Main method tests the above functions
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
         Cardholder cardholder = new Cardholder();
         TransportationCards tc = new TransportationCards();
         CountryCards cc = new CountryCards();
@@ -149,14 +150,14 @@ public class Cardholder {
         cardholder.placeInCardholder(23, 8); // Trinidad
         cardholder.placeInCardholder(51, 7); // Plane
         cardholder.placeInCardholder(29, 9); // Boat
-        StdOut.println(cardholder.checkValid(tc, cc));
+        System.out.println(cardholder.checkValid(tc, cc));
         cardholder.placeInCardholder(22, 10); // Barbados
-        StdOut.println(cardholder.checkValid(tc, cc));
-        StdOut.println(cardholder.toString(tc, cc));
+        System.out.println(cardholder.checkValid(tc, cc));
+        System.out.println(cardholder.toString(tc, cc));
 
-        StdOut.println(cardholder.hasCard(1));
-        StdOut.println(cardholder.canCross(tc, cc, 1));
-        StdOut.println(cardholder.canFly(tc, cc, 1));
+        System.out.println(cardholder.hasCard(1));
+        System.out.println(cardholder.canCross(tc, cc, 1));
+        System.out.println(cardholder.canFly(tc, cc, 1));
 
     }
 }

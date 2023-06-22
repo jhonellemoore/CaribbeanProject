@@ -1,3 +1,7 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
 public class CountryCards {
 
     // Array of country card objects
@@ -13,22 +17,23 @@ public class CountryCards {
     }
 
     // Populates the countrycards array using the specified text file
-    public CountryCards() {
-        In countryFile = new In("CaribCountries/Countries");
-        int n = countryFile.readInt();
+    public CountryCards() throws FileNotFoundException {
+        File countryFile = new File("/Users/jmoore/CaribbeanProject/CaribCountries/Countries");
+        Scanner countryList = new Scanner(countryFile);
+        int n = countryList.nextInt(); // first number in file is total number of countries
         countries = new CountryCard[n];
 
         // Populate countries array with info for each country card
         for (int i = 0; i < n; i++) {  // Each index represents a countrycard
             countries[i] = new CountryCard();
-            countries[i].name = countryFile.readString();
-            countries[i].color = countryFile.readString();
-            countries[i].fileName = countryFile.readString();
-            int numberOfNeighbors = countryFile.readInt();
+            countries[i].name = countryList.next();
+            countries[i].color = countryList.next();
+            countries[i].fileName = countryList.next();
+            int numberOfNeighbors = countryList.nextInt();
             countries[i].neighbors = new String[numberOfNeighbors];
 
             for (int j = 0; j < numberOfNeighbors; j++) {
-                countries[i].neighbors[j] = countryFile.readString();
+                countries[i].neighbors[j] = countryList.next();
             }
         }
     }
@@ -39,10 +44,11 @@ public class CountryCards {
     }
 
     // Displays a picture of the country card that is at index (n-1)
-    public void displayCard(int n) {
+    /* public void displayCard(int n) {
         if (isCountry(n))
             StdDraw.picture(.2, .35, countries[n - 1].fileName, .3, .35);
     }
+    */
 
     // Returns the name of the country at index (n-1)
     public String getName(int n) {
@@ -84,16 +90,17 @@ public class CountryCards {
     }
 
     // Tests methods
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
         CountryCards Test = new CountryCards();
-        StdDraw.picture(.5, .5, Test.countries[1].fileName, .4, .4);
-        StdOut.println(Test.getName(3));
-        StdOut.println(Test.getColor(1));
-        StdOut.println(Test.getNeighbors(2)[1]);
-        StdOut.println(Test.getFile(6));
-        StdOut.println(Test.toString(6));
+        // StdDraw.picture(.5, .5, Test.countries[1].fileName, .4, .4);
+        System.out.println(Test.getName(3));
+        System.out.println(Test.getColor(3));
+        System.out.println(Test.getNeighbors(3)[1]);
+        System.out.println(Test.getFile(3));
+        System.out.println(Test.toString(3));
 
-        Test.displayCard(6);
+        // Test.displayCard(6);
         Test.isCountry(6);
+
     }
 }
