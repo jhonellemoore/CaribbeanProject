@@ -12,3 +12,11 @@ Programming Project: 10 Days in the Caribbean
 
  Check the menuRules.png to see the game's rules
  Check the CaribbeanMap.png to see the map of the countries in the region and their colors and geographic locations
+
+/**********************************************************************
+ * Approximate number of hours to complete this assignment            *
+ **********************************************************************/
+
+The code for the main file is in Game.java. You can peruse this file to see how everything works on the back end.
+The cards are shuffled at the start of the game using an array of integers in Cards.java. The integers from 1 to 26 
+correspond to country cards and the integers from 27 to 51 correspond to transportation cards. Everytime a card is pulled, 
